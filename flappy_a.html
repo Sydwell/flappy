@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<!-- Author: Ahmed
+<!--
+Fixing attempt by Xola
 -->
 <html>
-    <!-- 
-    Author: S.Williams date 11 August 2014
--->
     <head>
         <title>MULTIMEDIA FLAPPY BIRD</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -72,14 +70,15 @@
         document.body.appendChild(canvas);
 
         //These are constants that apply to the physical images 
-        var birdHeight = 40;
+        var birdHeight = 38;
         var pillarHeight = 877;
         var holeStart = 365;
         var holeEnd = 482;
         var highScore = 0;
         //The baackground image
         var bgImage = new Image();
-        bgImage.src = "img/cput.jpg";
+        bgImage.src = "img/background.png";
+        //bgImage.style.backgroundRepeat="repeat-x";
         //Stores all pillars
         var pillarArray = new Array();
         //The actual flappy
