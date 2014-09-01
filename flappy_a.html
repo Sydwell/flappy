@@ -10,7 +10,7 @@
     <body id='theBody' onkeydown='keyHandler();' onclick="initialize();" style='padding:0px; margin:0px;'>
         <div style="float:right; margin-right:100px;">
             <h1>Leader Board</h1>
-            <table id="leaderBoard" style="border: #000099 solid thick;">
+            <table id="leaderBoard" style="border: #cc00cc  solid thick;">
                 <tr><th>AKA</th><th>Last Name</th><th>Score</th><th>Date</th></tr>
             </table>
         </div>
@@ -228,7 +228,7 @@
         function drawScore() {
             context.font = '60pt Calibri';
             context.lineWidth = 3;
-            context.strokeStyle = 'blue';
+            context.strokeStyle = '#cc00cc';
             context.strokeText(score, canvas.width / 2, canvas.height * 0.33);
         }
         function displayFinalScore() {
@@ -236,10 +236,10 @@
             var boxY = 110;
             context.beginPath();
             context.rect(canvas.width / 2 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
-            context.fillStyle = 'yellow';
+            context.fillStyle = '#ff99ff';
             context.fill();
             context.lineWidth = 7;
-            context.strokeStyle = 'black';
+            context.strokeStyle = '#cc00cc';
             context.stroke();
             context.beginPath();
             //drawScore(score);
