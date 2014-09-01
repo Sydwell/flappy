@@ -159,7 +159,7 @@
             }
             count++;
             if (check4collision()) {
-                console.log(" DEAD 2 !!! ");
+                console.log(" You got wasted !!! ");
                 gameOver = true;
             }
             window.setTimeout(snapShot, 10);
@@ -176,11 +176,11 @@
         function check4collision() {
             var collision = false;
             if (bird.getYpos() > canvas.height - birdHeight) {
-                console.log("Died bird to low ");
+                console.log("Wasted bird to low ");
                 collision = true;
             }
             if (bird.getYpos() < 0) {
-                console.log("Died bird to high " + score);
+                console.log("Wasted, bird to high " + score);
                 collision = true;
             }
             if (pillarArray[currentPillar] !== undefined) {
