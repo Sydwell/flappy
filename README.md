@@ -75,3 +75,9 @@ project and you should be ready to go! It should look something like below:
             Allow from all
         </Directory>
     </VirtualHost>
+flappy
+======
+
+Please Fix me
+
+I need help with images and general game play.
