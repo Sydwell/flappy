@@ -20,10 +20,10 @@
          * @returns {Bird}
          */
         Bird = function() {
-            this.posX = 150;
-            this.posY = 200;
+            this.posX = 120;
+            this.posY = 85;
             this.birdImage = new Image();
-            this.birdImage.src = 'img/flappy_bird2.png';
+            this.birdImage.src = 'img/bird.png';
             this.getYpos = function() {
                 return this.posY;
             };
@@ -74,7 +74,7 @@
         var highScore = 0;
         //The baackground image
         var bgImage = new Image();
-        bgImage.src = "img/background.jpg";
+        bgImage.src = "img/background_1.jpg";
         //Stores all pillars
         var pillarArray = new Array();
         //The actual flappy
