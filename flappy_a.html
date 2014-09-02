@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- Author: Ahmed
+<!-- Author: Ruweida
 -->
 <html>
     <!-- 
-    Author: S.Williams date 11 August 2014
+    Author: R.Valla date 1 September 2014
 -->
     <head>
         <title>MULTIMEDIA FLAPPY BIRD</title>
@@ -12,7 +12,7 @@
     <body id='theBody' onkeydown='keyHandler();' onclick="initialize();" style='padding:0px; margin:0px;'>
         <div style="float:right; margin-right:100px;">
             <h1>Leader Board</h1>
-            <table id="leaderBoard" style="border: #000099 solid thick;">
+            <table id="leaderBoard" style="border: red solid thick;">
                 <tr><th>AKA</th><th>Last Name</th><th>Score</th><th>Date</th></tr>
             </table>
         </div>
@@ -79,7 +79,7 @@
         var highScore = 0;
         //The baackground image
         var bgImage = new Image();
-        bgImage.src = "img/spider waps.jpg";
+        bgImage.src = "img/spiderwap.jpg";
         //Stores all pillars
         var pillarArray = new Array();
         //The actual flappy
@@ -230,21 +230,21 @@
         function drawScore() {
             context.font = '60pt Calibri';
             context.lineWidth = 3;
-            context.strokeStyle = 'blue';
+            context.strokeStyle = 'red';
             context.strokeText(score, canvas.width / 2, canvas.height * 0.33);
         }
         function displayFinalScore() {
-            var boxX = 280;
-            var boxY = 110;
+            var boxX = 270;
+            var boxY = 88;
             context.beginPath();
             context.rect(canvas.width / 2 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
-            context.fillStyle = 'yellow';
+            context.fillStyle = 'black';
             context.fill();
             context.lineWidth = 7;
-            context.strokeStyle = 'black';
+            context.strokeStyle = 'red';
             context.stroke();
             context.beginPath();
-            //drawScore(score);
+            drawScore(score);
             $.post("../../processing/do_game_score.php"
                     , {"game_name": "flappy_bird", "points": score, type: "new_score"}
             , function(data) {
