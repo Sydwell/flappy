@@ -44,7 +44,7 @@
             this.posY = 1 - Math.floor((Math.random() * 270));
             // this.posY = 0; // cheat mode
             this.pillarImage = new Image();
-            this.pillarImage.src = 'img/pillar_long.png';
+            this.pillarImage.src = 'img/pillar.png';
             this.getYpos = function() {
                 return this.posY;
             };
@@ -155,8 +155,8 @@
                 displayFinalScore();
                 return;
             } else {
-                if (up < 5) {
-                    bird.move(-10);
+                if (up < 10) {
+                    bird.move(-20);
                     up++;
                 } else {
                     bird.move(1);
@@ -167,7 +167,7 @@
                 console.log(" DEAD 2 !!! ");
                 gameOver = true;
             }
-            window.setTimeout(snapShot, 10);
+            window.setTimeout(snapShot, 20);
         }
         /**
          * Checks for collisions with
