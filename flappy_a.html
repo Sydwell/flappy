@@ -6,11 +6,14 @@
     Author: R.Valla date 1 September 2014
 -->
     <head>
-        <title>MULTIMEDIA FLAPPY BIRD</title>
+        <!--this is the title of the game page-->
+        <title>MULTIMEDIA Spider Game</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
+    <!--this is the score table styling for the game-->
     <body id='theBody' onkeydown='keyHandler();' onclick="initialize();" style='padding:0px; margin:0px;'>
         <div style="float:right; margin-right:100px;">
+            <!--this is the header for the leader board-->
             <h1>Leader Board</h1>
             <table id="leaderBoard" style="border: red solid thick;">
                 <tr><th>AKA</th><th>Last Name</th><th>Score</th><th>Date</th></tr>
@@ -24,6 +27,8 @@
          * 
          * @returns {Bird}
          */
+        //this here is the styling for the wasp or bird
+        //depending on how big or how small I need the bird to be
         Bird = function() {
             this.posX = 150;
             this.posY = 200;
@@ -44,6 +49,7 @@
                 context.drawImage(this.birdImage, this.posX, canvas.height - birdHeight);
             };
         };
+        //this is the styling for the pillars
         Pillar = function() {
             this.posX = canvas.width;
             this.posY = 1 - Math.floor((Math.random() * 270));
@@ -154,7 +160,7 @@
                 pillarArray.push(pillar2);
                 currentPillar = pillarArray.length - 3;
             }
-
+//if the bird gets caught inbetween the spiders it dies
             if (gameOver) {
                 bird.die();
                 displayFinalScore();
@@ -233,8 +239,9 @@
             context.strokeStyle = 'red';
             context.strokeText(score, canvas.width / 2, canvas.height * 0.33);
         }
+        //this is for the final score the box where the score is displayed
         function displayFinalScore() {
-            var boxX = 270;
+            var boxX = 260;
             var boxY = 88;
             context.beginPath();
             context.rect(canvas.width / 2 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
@@ -249,7 +256,7 @@
                     , {"game_name": "flappy_bird", "points": score, type: "new_score"}
             , function(data) {
                 context.lineWidth = 1;
-                context.font = '28pt Calibri';
+                context.font = '28pt Verdana';
                 context.strokeText("Score " + score, canvas.width / 2 - 120, canvas.height * 0.19);
                 context.strokeText("Personal Best " + data[0], canvas.width / 2 - 120, canvas.height * 0.24);
                 context.strokeText("Overall Best " + data[1], canvas.width / 2 - 120, canvas.height * 0.29);
