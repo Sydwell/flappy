@@ -78,7 +78,7 @@
         var highScore = 0;
         //The baackground image
         var bgImage = new Image();
-        bgImage.src = "img/cput.jpg";
+        bgImage.src = "img/background.jpg";
         //Stores all pillars
         var pillarArray = new Array();
         //The actual flappy
@@ -122,7 +122,7 @@
                 pillarArray.length = 0;
                 count = 0;
                 score = 0;
-                up = 5;
+                up = 150;
                 bird.initialize();
                 //This is a very important line this calls the snapShot method 
                 //atfer 10ms
@@ -195,7 +195,7 @@
             if (pillarArray[currentPillar] !== undefined) {
                 if (pillarArray[currentPillar].getXpos() < 100 || pillarArray[currentPillar].getXpos() > 200) //check for Safe area
                 {
-                    //     console.log(" Safe!!! " + pillarArray[currentPillar].getXpos());
+                        console.log(" Safe!!! " + pillarArray[currentPillar].getXpos());
                 } else {
                     if (pillarArray[currentPillar].getYpos() + holeStart > bird.getYpos()) {
                         console.log("Died into pillar Top " + currentPillar + " y " + bird.getYpos() + " P " + pillarArray[currentPillar].getYpos());
@@ -233,8 +233,8 @@
             context.strokeText(score, canvas.width / 2, canvas.height * 0.33);
         }
         function displayFinalScore() {
-            var boxX = 280;
-            var boxY = 110;
+            var boxX = 100;
+            var boxY = 90;
             context.beginPath();
             context.rect(canvas.width / 2 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
             context.fillStyle = 'yellow';
@@ -243,7 +243,7 @@
             context.strokeStyle = 'black';
             context.stroke();
             context.beginPath();
-            //drawScore(score);
+            drawScore(score);
             $.post("../../processing/do_game_score.php"
                     , {"game_name": "flappy_bird", "points": score, type: "new_score"}
             , function(data) {
