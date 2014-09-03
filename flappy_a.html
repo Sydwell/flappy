@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!-- Author: Ahmed
--->
+
 <html>
     <!-- 
-    Author: S.Williams date 11 August 2014
+    Author: Craig Christians date 2 September 2014
 -->
     <head>
         <title>MULTIMEDIA FLAPPY BIRD</title>
@@ -20,7 +19,7 @@
         <script  type='text/javascript' src='js/jquery-2.0.3.min.js'></script>
         <script type="text/javascript">
         /**
-         * First defined the functional objects
+         * First defined    the functional objects
          * 
          * @returns {Bird}
          */
@@ -79,7 +78,7 @@
         var highScore = 0;
         //The baackground image
         var bgImage = new Image();
-        bgImage.src = "img/background2.png";
+        bgImage.src = "img/background.png";
         //Stores all pillars
         var pillarArray = new Array();
         //The actual flappy
@@ -123,7 +122,7 @@
                 pillarArray.length = 0;
                 count = 0;
                 score = 0;
-                up = 5;
+                up = 150;
                 bird.initialize();
                 //This is a very important line this calls the snapShot method 
                 //atfer 10ms
@@ -196,7 +195,7 @@
             if (pillarArray[currentPillar] !== undefined) {
                 if (pillarArray[currentPillar].getXpos() < 100 || pillarArray[currentPillar].getXpos() > 200) //check for Safe area
                 {
-                    //     console.log(" Safe!!! " + pillarArray[currentPillar].getXpos());
+                        console.log(" Safe!!! " + pillarArray[currentPillar].getXpos());
                 } else {
                     if (pillarArray[currentPillar].getYpos() + holeStart > bird.getYpos()) {
                         console.log("Died into pillar Top " + currentPillar + " y " + bird.getYpos() + " P " + pillarArray[currentPillar].getYpos());
@@ -228,28 +227,28 @@
          * @returns {undefined}
          */
         function drawScore() {
-            context.font = '60pt Calibri';
+            context.font = '60pt Times New Roman';
             context.lineWidth = 3;
-            context.strokeStyle = 'blue';
+            context.strokeStyle = 'red';
             context.strokeText(score, canvas.width / 2, canvas.height * 0.33);
         }
         function displayFinalScore() {
-            var boxX = 280;
-            var boxY = 110;
+            var boxX = 100;
+            var boxY = 90;
             context.beginPath();
             context.rect(canvas.width / 2 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
-            context.fillStyle = 'yellow';
+            context.fillStyle = 'black';
             context.fill();
             context.lineWidth = 7;
-            context.strokeStyle = 'black';
+            context.strokeStyle = 'silver';
             context.stroke();
             context.beginPath();
-            //drawScore(score);
+            drawScore(score);
             $.post("../../processing/do_game_score.php"
                     , {"game_name": "flappy_bird", "points": score, type: "new_score"}
             , function(data) {
                 context.lineWidth = 1;
-                context.font = '28pt Calibri';
+                context.font = '28pt Times New Roman';
                 context.strokeText("Score " + score, canvas.width / 2 - 120, canvas.height * 0.19);
                 context.strokeText("Personal Best " + data[0], canvas.width / 2 - 120, canvas.height * 0.24);
                 context.strokeText("Overall Best " + data[1], canvas.width / 2 - 120, canvas.height * 0.29);
