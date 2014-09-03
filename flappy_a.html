@@ -9,9 +9,9 @@ Fixing attempt by Xola
     </head>
     <body id='theBody' onkeydown='keyHandler();' onclick="initialize();" style='padding:0px; margin:0px;'>
         <div style="float:right; margin-right:100px;">
-            <h1>Leader Board</h1>
-            <table id="leaderBoard" style="border: #000099 solid thick;">
-                <tr><th>AKA</th><th>Last Name</th><th>Score</th><th>Date</th></tr>
+            <h1 style="font-family:Arial; color:#1b9d14;" ;>Leader Board</h1>
+            <table id="leaderBoard" style="border: #1b9d14 solid;">
+                <tr style="font-family:Arial; color:#4a5c4a;"><th>AKA</th><th>Last Name</th><th>Score</th><th>Date</th></tr>
             </table>
         </div>
         <script  type='text/javascript' src='js/modernizr-2.6.2.min.js'></script>
@@ -26,7 +26,7 @@ Fixing attempt by Xola
             this.posX = 150;
             this.posY = 200;
             this.birdImage = new Image();
-            this.birdImage.src = 'img/flappy_bird2.png';
+            this.birdImage.src = 'img/flappy_bird.png';
             this.getYpos = function() {
                 return this.posY;
             };
@@ -38,7 +38,6 @@ Fixing attempt by Xola
                 context.drawImage(this.birdImage, this.posX, this.posY);
             };
             this.die = function() {
-
                 context.drawImage(this.birdImage, this.posX, canvas.height - birdHeight);
             };
         };
@@ -57,9 +56,13 @@ Fixing attempt by Xola
             this.move = function(amount) {
                 this.posX = this.posX - amount;
                 context.drawImage(this.pillarImage, this.posX, this.posY);
+				
+            //if (event.keyCode === 39) { // this is the right arrow to slow down the pillars
+            //   this.posX = this.posX + amount;
+            //   context.drawImage(this.pillarImage, this.posX, this.posY);
+            //}  
             };
         };
-
         // The excutable code starts here
         // The following 5 lines creates and adds HTML5 canvas with 
         // specific size to the body of the document
@@ -216,8 +219,12 @@ Fixing attempt by Xola
         function keyHandler() {
             if (!event)
                 var event = window.event; // cross-browser shenanigans
-            if (event.keyCode === 32) { // this is the spacebar
+				//Respondingg to keyboard keys
+            if (event.keyCode === 38) { // this is the up arrow
                 up = 0;
+            }
+            if (event.keyCode === 40) { // this is the down arrow
+                down = 0;
             }
             return true; // treat all other keys normally;
         }
@@ -229,7 +236,8 @@ Fixing attempt by Xola
         function drawScore() {
             context.font = '60pt Calibri';
             context.lineWidth = 3;
-            context.strokeStyle = 'blue';
+            context.strokeStyle = '#97f592';
+            context.color = '#97f592';
             context.strokeText(score, canvas.width / 2, canvas.height * 0.33);
         }
         function displayFinalScore() {
@@ -237,10 +245,10 @@ Fixing attempt by Xola
             var boxY = 110;
             context.beginPath();
             context.rect(canvas.width / 2 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
-            context.fillStyle = 'yellow';
+            context.fillStyle = '#97f592';
             context.fill();
             context.lineWidth = 7;
-            context.strokeStyle = 'black';
+            context.strokeStyle = '#1b9d14';
             context.stroke();
             context.beginPath();
             //drawScore(score);
@@ -248,14 +256,11 @@ Fixing attempt by Xola
                     , {"game_name": "flappy_bird", "points": score, type: "new_score"}
             , function(data) {
                 context.lineWidth = 1;
-                context.font = '28pt Calibri';
+                context.font = '28pt verdana';
                 context.strokeText("Score " + score, canvas.width / 2 - 120, canvas.height * 0.19);
                 context.strokeText("Personal Best " + data[0], canvas.width / 2 - 120, canvas.height * 0.24);
                 context.strokeText("Overall Best " + data[1], canvas.width / 2 - 120, canvas.height * 0.29);
             }, 'json');
-
-
-
         }
         </script>
     </body>
