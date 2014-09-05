@@ -242,16 +242,16 @@ Fixing attempt by Xola
         }
         function displayFinalScore() {
             var boxX = 280;
-            var boxY = 110;
+            var boxY = 85;
             context.beginPath();
-            context.rect(canvas.width / 2 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
-            context.fillStyle = '#97f592';
+            context.rect(canvas.width / 1.9 - boxX / 2, canvas.height / 2 - boxY * 2, boxX, boxY);
+            context.fillStyle = '#97a090';
             context.fill();
             context.lineWidth = 7;
             context.strokeStyle = '#1b9d14';
             context.stroke();
             context.beginPath();
-            //drawScore(score);
+            drawScore(score);
             $.post("../../processing/do_game_score.php"
                     , {"game_name": "flappy_bird", "points": score, type: "new_score"}
             , function(data) {
